@@ -1,0 +1,179 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
+
+
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ervandew/supertab'
+
+" themes
+Plugin 'chriskempson/base16-vim'
+Plugin 'cdmedia/itg_flat_vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+
+" make shit nice
+syntax on
+colorscheme itg_flat
+set nocompatible
+
+" Add line numbers
+set number
+set cursorline
+set relativenumber
+
+" Setting a vertical ruler at char x
+" set colorcolumn=85
+
+set tabstop=3
+" set encoding
+set encoding=utf-8
+
+" Whitespace stuff
+set nowrap
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set expandtab
+
+" autoload files when changed externally
+set autoread
+
+" remove crapy help
+inoremap <F1> <nop>
+nnoremap <F1> <nop>
+vnoremap <F1> <nop>
+
+" turn off normal arrow keys,
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+
+"use ctags for tag integration
+command! MakeTags !ctags -R .
+" use ^] to jump to tag
+" use g^] for ambiguous tags
+" use ^t to jump back up the tag stack
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc
+
+" Show trailing spaces and highlight hard tabs
+set list listchars=tab:»·,trail:·
+
+" Strip trailing whitespaces on each save
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+
+" Airline config
+let g:airline_powerline_fonts = 1
+set guifont=Sauce\ Code\ Powerline\ Semibold:h12
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+set fillchars+=stl:\ ,stlnc:\
+set laststatus=2
+set ttimeoutlen=50
+let g:airline_theme='base16'
+
+" configure search
+set hlsearch
+nnoremap <CR> :nohlsearch<CR><CR>
+noremap <F3> :set hlsearch! hlsearch?<CR>
+
+
+" filetype plugin indent on
+filetype plugin on
+filetype on
+
+" Switch between splits
+map <silent> <S-Right> <c-w>l
+map <silent> <S-Left> <c-w>h
+map <silent> <S-Up> <c-w>k
+map <silent> <S-Down> <c-w>j
+
+" NerdTree Settings
+map <F2> :NERDTreeToggle<CR>
+map <silent> <C-F2> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
+autocmd BufEnter * lcd %:p:h
+
+" ctrl p should ignore useless files
+let ctrlp_filter_greps = "".
+    \ "egrep -iv '\\.(" .
+    \ "jar|class|pdf|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
+    \ ")$' | " .
+    \ "egrep -v '^(\\./)?(" .
+    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
+    \ ")'"
+
+let my_ctrlp_git_command = "" .
+    \ "cd %s && git ls-files | " .
+    \ ctrlp_filter_greps
+
+if has("unix")
+    let my_ctrlp_user_command = "" .
+    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+    \ ctrlp_filter_greps
+endif
+
+let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
+
+nmap <F8> :TagbarToggle<CR>
+
+
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
