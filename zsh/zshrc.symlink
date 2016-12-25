@@ -142,7 +142,6 @@ alias subl="subl3"
 
 alias http_python="python2 -m SimpleHTTPServer"
 
-alias bytecode-viewer="java -jar /usr/share/bytecode-viewer/BytecodeViewer\ 2.9.8.jar"
 VISUAL=vim
 printf '[4 q'
 
