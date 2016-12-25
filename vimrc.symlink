@@ -25,6 +25,12 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ervandew/supertab'
+Plugin 'Syntastic'
+Plugin 'Tagbar'
+Plugin 'Auto-Pairs'
+Plugin 'benmills/vimux'
+Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+
 
 " themes
 Plugin 'chriskempson/base16-vim'
@@ -63,6 +69,8 @@ set relativenumber
 set tabstop=3
 " set encoding
 set encoding=utf-8
+" faster redrawing
+set ttyfast
 
 " Whitespace stuff
 set nowrap
@@ -177,3 +185,15 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
+
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
