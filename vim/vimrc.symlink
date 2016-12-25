@@ -33,6 +33,8 @@ Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 
+
+
 " themes
 Plugin 'chriskempson/base16-vim'
 Plugin 'cdmedia/itg_flat_vim'
@@ -93,7 +95,10 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
-
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
 
 "use ctags for tag integration
 command! MakeTags !ctags -R .
@@ -210,3 +215,4 @@ let g:multi_cursor_quit_key='<Esc>'
 
 " Map start key separately from next key
 let g:multi_cursor_start_key='<F6>'
+
