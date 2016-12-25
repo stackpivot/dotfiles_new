@@ -14,7 +14,7 @@ HISTFILE=~/.zsh_history
 # DEFAULT=USER="cpyriot"
 autoload -Uz promptinit
 promptinit
-prompt agnoster
+prompt sorin
 bindkey "^R"  history-incremental-search-backward
 bindkey "^[[1;5C" emacs-forward-word
 bindkey "^[[1;5D" backward-word
