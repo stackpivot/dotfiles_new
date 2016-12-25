@@ -1,0 +1,71 @@
+separator=false
+separator_block_width=10
+border_top=2
+border_left=0
+border_right=0
+border_bottom=0
+
+[volume]
+command=~/.config/i3blocks/render_volume
+interval=1
+signal=1
+border=#cc241d
+markup=pango
+
+[wireless]
+label=  
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+border=#98971a
+
+[iface]
+label= 
+instance=enp0s31f6
+command=~/.config/i3blocks/render_iface
+interval=2
+border=#98971a
+
+[iface]
+label= 
+instance=enp0s20f0u4
+command=~/.config/i3blocks/render_iface
+interval=2
+border=#98971a
+
+[openvpn]
+command=~/.config/i3blocks/openvpn.py
+interval=20
+border=#cc241d
+
+[battery]
+command=~/.config/i3blocks/render_battery
+instance=0
+interval=10
+border=#458588
+
+[battery]
+command=~/.config/i3blocks/render_battery
+instance=1
+interval=10
+border=#458588
+
+
+[weather]
+command=~/.config/i3blocks/weather.sh berlin
+interval=1800
+border=#458588
+
+
+[spotify]
+label=
+command=~/.config/i3blocks/spotify.py
+border=#81b71a
+interval=5
+
+[time]
+label=  
+command=/home/jon/.config/i3blocks/calendar &> /dev/null; echo "CW`date +%V`   `date +'%d %b'` <b>`date +'%R'`</b> "
+interval=10
+markup=pango
+border=#928374
+separator_block_width=0

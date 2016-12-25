@@ -1,0 +1,353 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+
+set $mod Mod4
+
+# borders
+#
+# gaps
+#for_window [class="^.*"] border pixel 1
+smart_gaps on
+smart_borders on
+
+gaps inner 4
+gaps outer 0
+
+
+exec --no-startup-id setxkbmap de
+exec --no-startup-id feh --bg-center ~/.wallpaper.jpg
+exec --no-startup-id compton --config ~/.config/compton.conf &
+
+
+# borders for new windows and for new floating windows
+new_window pixel 1
+new_float normal
+
+font pango:Sans 9
+
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec termite
+
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+#bindsym $mod+Ctrl+Right exec playerctl next
+#bindsym $mod+Ctrl+Left exec playerctl previous
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+r exec "dmenu_run -b -nb \#3f3f3f -nf \#ecdccc -sf \#3f3f3f -sb \#ecdccc
+
+# lock screen
+bindsym $mod+Ctrl+End exec "/home/jon/.config/i3/pixellock.sh"
+bindsym $mod+End exec "/home/jon/.config/i3/pixellock.sh"
+bindsym $mod+F12 exec "/home/jon/.config/i3/powermenu"
+bindsym $mod+F11 exec "/home/jon/.screenlayout/thinkpad.sh"
+
+# change focus
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus left
+bindsym $mod+odiaeresis focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+x layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+
+# switch to workspace
+bindsym $mod+1 workspace number 1:
+bindsym $mod+2 workspace number 2:
+bindsym $mod+3 workspace number 3:
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8:msf
+bindsym $mod+9 workspace number 9:
+bindsym $mod+0 workspace number 10:vm
+
+# move to adjacent workspaces
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# move containers and windows to different outputs
+# use xrandr to configure
+bindsym $mod+Mod1+Right move container to output right
+bindsym $mod+Shift+Mod1+Right move workspace to output right
+bindsym $mod+Mod1+Left move container to output left
+bindsym $mod+Shift+Mod1+Left move workspace to output left
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1:
+bindsym $mod+Shift+2 move container to workspace number 2:
+bindsym $mod+Shift+3 move container to workspace number 3:
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8:msf
+bindsym $mod+Shift+9 move container to workspace number 9:
+bindsym $mod+Shift+0 move container to workspace number 10:vm
+
+# move window to next/prev workspace and switch to workspace
+bindsym $mod+Shift+Ctrl+Right move container to workspace next; workspace next
+bindsym $mod+Shift+Ctrl+Left move container to workspace prev; workspace prev
+
+# reload the configuration file
+bindsym $mod+Shift+q reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym §mod+F12 exec /home/jon/.config/i3/lock.sh
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will grow the window’s width.
+        # Pressing right will shrink the window’s width.
+        # Pressing up will grow the window’s height.
+        # Pressing down will shrink the window’s height.
+        bindsym j resize grow width 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow height 10 px or 10 ppt
+        bindsym odiaeresis resize shrink width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize grow width 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Right resize shrink width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+d mode "resize"
+
+# rename workspace
+bindsym $mod+n exec i3-input -F 'rename workspace to %s' -P 'New name: '
+bindsym $mod+m exec i3-input -F 'move workspace to output %s' -P 'Output: '
+
+# toggle between two spaces
+bindsym $mod+Escape workspace back_and_forth
+
+# incr/decr screen brightness
+bindcode 233 exec --no-startup-id "sudo /usr/local/bin/bright.py inc"
+bindcode 232 exec --no-startup-id "sudo /usr/local/bin/bright.py dec"
+
+# jump to messenger window
+bindsym $mod+u [class="psi" instance="tabs"] focus
+bindsym $mod+Shift+u [urgent="latest"] focus
+
+# accent grave, move to scratchpad, toggle scratchpad
+bindcode $mod+Shift+49 move scratchpad
+bindcode $mod+49 scratchpad show
+
+# random wallpaper
+bindsym $mod+i exec --no-startup-id "python3 /home/jon/wallpaper/randomWP.py"
+
+# file manager
+bindsym $mod+e exec "sunflower"
+
+# window pager
+bindsym $mod+Tab exec --no-startup-id "python ~/.config/i3/winmenu.py"
+
+
+# shutdown system
+#bindsym $mod+Ctrl+End exec "i3-nagbar -t warning -m 'Shutdown the machine?' -t error -f 'Sans 12' -b 'Yes, please.' 'sudo halt'"
+
+# border and position for messenger
+for_window [class="psi+"] floating enable border normal
+for_window [class="psi" instance="main"] move absolute position 992 px 0 px move to workspace 2:msg
+
+# toggle workspaces on repeated number press
+workspace_auto_back_and_forth yes
+
+# Mark windows to be able to quickly jump to them
+bindsym $mod+Shift+F1 mark F1
+bindsym $mod+Shift+F2 mark F2
+bindsym $mod+Shift+F3 mark F3
+bindsym $mod+Shift+F4 mark F4
+
+bindsym $mod+F1 [con_mark="F1"] focus
+bindsym $mod+F2 [con_mark="F2"] focus
+bindsym $mod+F3 [con_mark="F3"] focus
+bindsym $mod+F4 [con_mark="F4"] focus
+
+
+# setting solarized colorscheme vars
+
+# solarized accents
+set $yellow #b58900
+set $orange #cb4b16
+set $red #dc322f
+set $magenta #d33682
+set $violet #6c71c4
+set $blue #268bd2
+set $cyan #2aa198
+set $green #859900
+
+# solarized dark
+set $baseA3 #002b36
+set $baseA2 #073642
+set $baseA1 #586e75
+set $baseA0 #657b83
+set $baseB0 #839496
+set $baseB1 #93a1a1
+set $baseB2 #eee8d5
+set $baseB3 #fdf6e3
+set $custom #1c5766
+
+
+
+# $i3-background
+exec_always --no-startup-id xsetroot -solid '$baseA2'
+
+
+# colors
+# class             border  bg      text    indicator
+#client.focused      #FF0000 #ecdccc #3f3f3f #B0363E
+#client.unfocused    #0f0f0f #3f3f3f #ecdccc #030303
+#client.urgent       #ff0000 #900000 #ffffff #900000
+client.focused $green $green $baseB3 $blue
+client.focused_inactive $cyan $cyan $baseB2 $violet
+client.unfocused $baseA2 $baseA2 $baseB1 $baseA1
+#client.urgent $orange $orange $baseB3 $red
+client.urgent $yellow $yellow $baseB3 $orange
+
+
+
+# wait 500ms before resetting the urgent hint
+force_display_urgency_hint 1000 ms
+
+
+set $darkBackGround #1d1f21
+
+# solarized colors
+
+set $background     #002b36
+set $background_hi  #073642
+set $secondary      #586e75
+set $primary        #839496
+set $emphasized     #93a1a1
+
+# accent colors
+
+set $yellow        #b58900
+set $orange        #cb4b16
+set $red           #dc322f
+set $magenta       #d33682
+set $violet        #6c71c4
+set $blue          #268bd2
+set $cyan          #2aa198
+set $green         #859900
+
+set $status_bg     #000000aa
+
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        Modifier $mod
+        #status_command i3status
+        status_command i3blocks -c /home/jon/.config/i3blocks/config
+        i3bar_command i3bar -t
+        font pango:Hack, FontAwesome 10
+        #mode hide
+        height 22
+        position bottom
+
+        colors {
+
+               # status
+                 separator #ecdccc
+                 #background $darkBackGround
+                 background $status_bg
+                 statusline $baseB2
+                 ###################
+                 # solarized (clean)
+                 ###################
+                 # workclass border backgr. text
+                 #focused_workspace $blue $blue $baseA3
+                 #active_workspace $cyan $cyan $baseA2
+                 #inactive_workspace $baseA2 $baseA2 $baseB1
+                 #urgent_workspace $orange $orange $baseB3
+
+            focused_workspace #3f3f3f #ecdccc $darkBackGround
+            active_workspace #3f3f3f #3f3f3f #ecdccc
+            inactive_workspace #3f3f3f #003f3f3f #ecdccc
+            urgent_workspace #ff0000 #ff0000 #ffffff
+        }
+}
+
+
+
+
+
+# start dmenu (a program launcher)
+#bindsym $mod+r exec "dmenu_run -b -nb \#073642 -nf \#ecdccc -sf \#3f4f3f -sb \#cb4b16
+bindsym $mod+r exec "rofi /usr/bin/urxvt -sidebar-mode -show run -terminal /usr/bin/termite -hldg \#cb4b16 -hlfg \#fdf6e3 -fg \#4f4f4f -bg \#1d1f21"
+bindsym Mod1+Tab exec "rofi -show window"
+
+
+
+exec --no-startup-id "i3-msg rename workspace to 1:term"
+#exec --no-stratup-id "urxvtd"
+exec --no-startup-id "xrdb -merge /home/jon/.Xresources"

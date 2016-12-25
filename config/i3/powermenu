@@ -1,0 +1,35 @@
+#!/bin/sh
+
+options=(
+	'Logout'
+	'Reload i3'
+	'Restart i3'
+	'Suspend'
+	'Hibernate'
+	'Reboot'
+	'Poweroff'
+)
+
+handle_selection(){
+	
+	case $1 in
+		Logout )
+		/usr/bin/i3-msg exit;;
+		Reload )
+		/usr/bin/i3-msg reload;;
+		
+		Suspend )
+		/usr/bin/i3lock-fancy;
+		/usr/bin/systemctl suspend;;
+		Hibernate )
+		/usr/bin/systemctl hibernate;;
+		Reboot )
+		/usr/bin/systemctl reboot;;
+		Poweroff )
+		/usr/bin/systemctl poweroff;;
+	esac
+
+}
+
+
+handle_selection "$(printf "%s\n" "${options[@]}" | /usr/bin/rofi -p 'Power menu: ' -dmenu -i -terminal /usr/bin/termite -hlbg \#a1b56c -hlfg \#181818 -fg \#e8e8e8 -bg \#181818 )"

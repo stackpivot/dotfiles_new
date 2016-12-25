@@ -1,0 +1,46 @@
+separator=false
+separator_block_width=8
+#
+#
+#
+#
+
+[volume]
+command=~/.config/i3blocks/render_volume
+interval=10
+signal=1
+
+markup=pango
+
+[wireless]
+label=  
+command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+interval=2
+
+
+[iface]
+label= eth
+instance=enp0s31f6
+command=~/.config/i3blocks/render_iface
+interval=2
+
+
+[battery]
+command=~/.config/i3blocks/render_battery
+instance=0
+interval=10
+
+
+[battery]
+command=~/.config/i3blocks/render_battery
+instance=1
+interval=10
+
+
+[time]
+label=  
+command=echo "`date +'%d %b'` <b>`date +'%I:%M %p'`</b> "
+interval=10
+markup=pango
+
+separator_block_width=0
