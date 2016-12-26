@@ -32,6 +32,8 @@ Plugin 'benmills/vimux'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'yggdroot/indentline'
+Plugin 'easymotion/vim-easymotion'
 
 
 
@@ -216,3 +218,11 @@ let g:multi_cursor_quit_key='<Esc>'
 " Map start key separately from next key
 let g:multi_cursor_start_key='<F6>'
 
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" " Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+nmap <C-f> <Plug>(easymotion-overwin-f)
+nmap <C-w> <Plug>(easymotion-bd-w)
+" "
