@@ -60,6 +60,7 @@ filetype plugin indent on    " required
 
 " make shit nice
 syntax on
+let base16colorspace=256
 colorscheme itg_flat
 set nocompatible
 
@@ -210,9 +211,6 @@ let g:syntastic_check_on_wq = 0
 
 " Multi Cursor
 " Default mapping
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " Map start key separately from next key
@@ -235,3 +233,6 @@ omap / <Plug>(easymotion-tn)
  " different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)")
+
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[] ]
