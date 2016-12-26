@@ -155,6 +155,11 @@ map <silent> <S-Left> <c-w>h
 map <silent> <S-Up> <c-w>k
 map <silent> <S-Down> <c-w>j
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " NerdTree Settings
 map <F2> :NERDTreeToggle<CR>
 map <silent> <C-F2> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
@@ -222,7 +227,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 nmap <C-f> <Plug>(easymotion-overwin-f)
-nmap <C-w> <Plug>(easymotion-bd-w)
 
 
 map  / <Plug>(easymotion-sn)
@@ -234,5 +238,6 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)")
 
+" Stop highlighting after search with esc
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[] ]

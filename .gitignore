@@ -1,5 +1,6 @@
 vim/vim.symlink/bundle/*
 *.swp
+*.swo
 
 !vim/vim.symlink/bundle/Vundle.vim
 !vim/vim.symlink/bundle/Vundle.vim/*
