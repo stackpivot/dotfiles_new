@@ -29,5 +29,5 @@ mkdir -p ~/.vim-tmp
 
 echo "Configuring zsh as default shell"
 chsh -s $(which zsh)
-
+vim +PluginInstall +qall
 echo "Done."
