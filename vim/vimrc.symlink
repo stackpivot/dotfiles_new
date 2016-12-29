@@ -24,7 +24,6 @@ Plugin 'benmills/vimux'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'yggdroot/indentline'
 Plugin 'easymotion/vim-easymotion'
 " Making math , average stuff easier, mark stuff in visual mode press ++
 Plugin 'nixon/vim-vmath'
