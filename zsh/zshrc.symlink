@@ -21,7 +21,8 @@ bindkey "^[[1;5D" backward-word
 bindkey "^E" end-of-line
 bindkey "^A" beginning-of-line
 # xautolock -time 20 -locker lock
-
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
