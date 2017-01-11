@@ -50,30 +50,6 @@ Plugin 'morhetz/gruvbox'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-" python with virtualenv support
-" Add the virtualenv's site-packages to vim path
-"if has('python')
-"py << EOF
-"import os.path
-"import sys
-"import vim
-"if 'VIRTUAL_ENV' in os.environ:
-"    project_base_dir = os.environ['VIRTUAL_ENV']
-"    sys.path.insert(0, project_base_dir)
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"    execfile(activate_this, dict(__file__=activate_this))
-"EOF
-"endif
 
 " -----------------------------------------------------------------------
 " YouCompleteMe
@@ -122,6 +98,7 @@ set nolist  " list disables linebreak
 "nnoremap <space> za
 " Setting a vertical ruler at char x
 " set colorcolumn=85
+set clipboard=unnamed
 
 set tabstop=3
 " set encoding
@@ -163,6 +140,10 @@ command! MakeTags !ctags -R .
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
 
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
@@ -235,7 +216,7 @@ if has("unix")
     \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
     \ ctrlp_filter_greps
 endif
-
+let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
 nmap <F8> :TagbarToggle<CR>
