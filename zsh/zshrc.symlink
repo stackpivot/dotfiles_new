@@ -23,6 +23,7 @@ bindkey "^A" beginning-of-line
 # xautolock -time 20 -locker lock
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
