@@ -1,0 +1,19 @@
+pane	0	0	:zsh	1	:*	1	:/home/jon	1	zsh	:
+pane	18	1	:ssh	1	:*	1	:/home/jon	1	ssh	:ssh fuzz
+pane	18	2	:zsh	0	:-	1	:/home/jon	1	zsh	:
+pane	20	1	:zsh	1	:*	1	:/home/jon	1	zsh	:
+pane	20	1	:zsh	1	:*	2	:/home/jon	0	zsh	:
+pane	20	1	:zsh	1	:*	3	:/home/jon	0	zsh	:
+pane	28	1	:zsh	0	:-	1	:/home/jon	0	vim	:vim .vimrc
+pane	28	1	:zsh	0	:-	2	:/home/jon	1	zsh	:
+pane	28	1	:zsh	0	:-	3	:/home/jon	0	ssh	:ssh fuzz
+pane	28	2	:zsh	0	:	1	:/home/jon	1	zsh	:
+pane	28	3	:test	1	:*	1	:/home/jon	1	dmesg	:dmesg -w
+window	0	0	1	:*	b65d,213x52,0,0,0
+window	18	1	1	:*	5b69,213x52,0,0,39
+window	18	2	0	:-	5b65,213x52,0,0,35
+window	20	1	1	:*	b2ef,213x51,0,0{86x51,0,0,42,126x51,87,0[126x25,87,0,43,126x25,87,26,44]}
+window	28	1	0	:-	d96e,213x51,0,0{106x51,0,0,55,106x51,107,0[106x25,107,0,65,106x25,107,26,66]}
+window	28	2	0	:	5967,213x51,0,0,56
+window	28	3	1	:*	d968,213x51,0,0,67
+state	28	
