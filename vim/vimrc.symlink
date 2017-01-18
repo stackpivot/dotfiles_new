@@ -5,7 +5,7 @@ let mapleader = "\<Space>"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 set spelllang=en,de
-
+map ; :
 
 Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
