@@ -149,3 +149,6 @@ VISUAL=vim
 printf '[4 q'
 
 alias vim="TERM=screen-256color vim"
+unalias rm
+# bindkey for vim mode. Press ESC
+bindkey -v

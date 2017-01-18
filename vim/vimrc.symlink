@@ -1,16 +1,23 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set nofoldenable
+
 let mapleader = "\<Space>"
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 set spelllang=en,de
+set clipboard=unnamed
 map ; :
 
+" automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc
+
+" ---------------------------------------------------------------------------------------------
+" Vundle Plugins
+" ---------------------------------------------------------------------------------------------
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -20,9 +27,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-"Plugin 'ervandew/supertab'
-"Plugin 'davidhalter/jedi-vim'
-
 Plugin 'Tagbar'
 Plugin 'Auto-Pairs'
 Plugin 'benmills/vimux'
@@ -30,6 +34,7 @@ Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
+
 " Making math , average stuff easier, mark stuff in visual mode press ++
 Plugin 'nixon/vim-vmath'
 Plugin 'fisadev/dragvisuals.vim'
@@ -43,13 +48,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Syntastic'
 
-
 " Markdown
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
-
-" themes
+" Themes
 Plugin 'chriskempson/base16-vim'
 Plugin 'cdmedia/itg_flat_vim'
 Plugin 'morhetz/gruvbox'
@@ -59,8 +62,116 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 
-" -----------------------------------------------------------------------
+
+
+
+" ---------------------------------------------------------------------------------------------
+" Make shit pretty, look & feel
+" ---------------------------------------------------------------------------------------------
+syntax on
+let base16colorspace=256
+colorscheme gruvbox
+set background=dark
+set nocompatible
+let python_highlight_all=1
+
+" Add line numbers
+set number
+set cursorline
+set relativenumber
+
+" set encoding
+set encoding=utf-8
+
+" faster redrawing
+set ttyfast
+set wrap
+set linebreak
+
+
+" Whitespace stuff
+" set nowrap
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set expandtab
+
+" autoload files when changed externally
+set autoread
+
+
+set nolist  " list disables linebreak
+" Code fold?!
+"collapse and fold
+"set foldmethod=indent
+"set foldlevel=99
+"nnoremap <space> za
+" Setting a vertical ruler at char x
+" set colorcolumn=85
+
+" ---------------------------------------------------------------------------------------------
+" General Keybindungs
+" ---------------------------------------------------------------------------------------------
+
+" build in autocompletion
+map <leader>n <C-X><C-K>
+
+" remove crapy help
+inoremap <F1> <nop>
+nnoremap <F1> <nop>
+vnoremap <F1> <nop>
+
+" turn off normal arrow keys, gotta force those n000bs that copy my dotfiles
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap  <Up>     <nop>
+inoremap  <Down>   <nop>
+inoremap  <Left>   <nop>
+inoremap  <Right>  <nop>
+
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Keymaping for dragvisual
+vmap <expr> H DVB_Drag('left')
+vmap <expr> J DVB_Drag('down')
+vmap <expr> K DVB_Drag('up')
+vmap <expr> L DVB_Drag('right')
+vmap <expr> D DVB_Duplicate()
+
+" Switch between splits
+map <silent> <S-Right> <c-w>l
+map <silent> <S-Left> <c-w>h
+map <silent> <S-Up> <c-w>k
+map <silent> <S-Down> <c-w>j
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+
+" use ctags for tag integration
+" TODO: maybe i should not use this and use ycm?
+command! MakeTags !ctags -R .
+" use ^] to jump to tag
+" use g^] for ambiguous tags
+" use ^t to jump back up the tag stack
+
+
+" next buffer
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
+" ---------------------------------------------------------------------------------------------
 " YouCompleteMe
+" ---------------------------------------------------------------------------------------------
 let g:ycm_autoclose_preview_window_after_completion=1
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Super Nice YouCompleteMe IDE shit
@@ -72,91 +183,25 @@ nnoremap <leader>d :YcmCompleter GetDoc<CR>
 let g:ycm_error_symbol = '!!'
 let g:ycm_warning_symbol = '>>'
 
-map <leader>n <C-X><C-K>
-
 " Additional autocomplete settings
 let g:ycm_complete_in_comments = 0
 let g:ycm_complete_in_strings = 1
 
 
-"UltiSnips Snippets
+
+" ---------------------------------------------------------------------------------------------
+" UltiSnips Snippets
+" ---------------------------------------------------------------------------------------------
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
-" make shit nice
-syntax on
-let python_highlight_all=1
 
-let base16colorspace=256
-colorscheme gruvbox
-set background=dark
-set nocompatible
 
-" Add line numbers
-set number
-set cursorline
-set relativenumber
 
-set wrap
-set linebreak
-set nolist  " list disables linebreak
-
-"collapse and fold
-"set foldmethod=indent
-"set foldlevel=99
-"nnoremap <space> za
-" Setting a vertical ruler at char x
-" set colorcolumn=85
-set clipboard=unnamed
-
-set tabstop=3
-" set encoding
-set encoding=utf-8
-" faster redrawing
-set ttyfast
-
-" Whitespace stuff
-set nowrap
-set tabstop=3
-set shiftwidth=3
-set softtabstop=3
-set expandtab
-
-" autoload files when changed externally
-set autoread
-
-" remove crapy help
-inoremap <F1> <nop>
-nnoremap <F1> <nop>
-vnoremap <F1> <nop>
-
-" turn off normal arrow keys,
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-inoremap  <Up>     <nop>
-inoremap  <Down>   <nop>
-inoremap  <Left>   <nop>
-inoremap  <Right>  <nop>
-
-"use ctags for tag integration
-command! MakeTags !ctags -R .
-" use ^] to jump to tag
-" use g^] for ambiguous tags
-" use ^t to jump back up the tag stack
-
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-map gn :bn<cr>
-map gp :bp<cr>
-map gd :bd<cr>
-
-" automatically reload vimrc when it's saved
-au BufWritePost .vimrc so ~/.vimrc
+" ---------------------------------------------------------------------------------------------
+" awesome vim functions
+" ---------------------------------------------------------------------------------------------
 
 " Show trailing spaces and highlight hard tabs
 set list listchars=tab:»·,trail:·
@@ -171,7 +216,9 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 
-" Airline config
+" ---------------------------------------------------------------------------------------------
+" Airline Config
+" ---------------------------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 "set guifont=Sauce\ Code\ Powerline\ Semibold:h11
@@ -183,25 +230,19 @@ set laststatus=2
 set ttimeoutlen=50
 let g:airline_theme='base16'
 
+
+
 " configure search
 set hlsearch
 nnoremap <CR> :nohlsearch<CR><CR>
 noremap <F3> :set hlsearch! hlsearch?<CR>
 
+
+
 " filetype plugin indent on
 filetype plugin on
 filetype on
 
-" Switch between splits
-map <silent> <S-Right> <c-w>l
-map <silent> <S-Left> <c-w>h
-map <silent> <S-Up> <c-w>k
-map <silent> <S-Down> <c-w>j
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " NerdTree Settings
 map <F2> :NERDTreeToggle<CR>
@@ -226,6 +267,7 @@ if has("unix")
     \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
     \ ctrlp_filter_greps
 endif
+
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
@@ -285,12 +327,5 @@ map  N <Plug>(easymotion-prev)")
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[] ]
 
-
-" Keymaping for dragvisual
-vmap <expr> H DVB_Drag('left')
-vmap <expr> J DVB_Drag('down')
-vmap <expr> K DVB_Drag('up')
-vmap <expr> L DVB_Drag('right')
-vmap <expr> D DVB_Duplicate()
 
 let g:ycm_python_binary_path = '/home/jon/.virtualenvs/angr/bin/python2'
