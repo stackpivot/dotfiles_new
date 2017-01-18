@@ -351,3 +351,5 @@ bindsym Mod1+Tab exec "rofi -show window"
 exec --no-startup-id "i3-msg rename workspace to 1:term"
 #exec --no-stratup-id "urxvtd"
 exec --no-startup-id "xrdb -merge /home/jon/.Xresources"
+exec xmodmap ~/.dotfiles/config/i3/umlaute
+
