@@ -1,0 +1,6 @@
+:noremap j 10j
+:noremap k 10k
+:colorscheme gruvbox
+:hi CmdLine -append font-size:12px
+
+:set hintchars=hjklasdfguiqwertnmxcvb
