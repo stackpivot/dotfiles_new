@@ -1,7 +1,10 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+" filetype off                  " required
 set nofoldenable
 
+" filetype plugin indent on
+filetype plugin on
+filetype on
 let mapleader = "\<Space>"
 set spelllang=en,de
 set clipboard=unnamed
@@ -169,6 +172,78 @@ map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
 
+
+" Fix annoying typo's of WQ, QA and Q
+command! WQ wq
+command! Wq wq
+
+command! W w
+command! Q q
+
+command! QA qa
+command! Qa qa
+command! Bufmacro bufdo execute "normal @a" | write
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+noremap j gj
+noremap k gk
+
+" use up and dow arrow to move line
+noremap <up> ddkP
+noremap <down> ddp
+
+" Code folding options
+nnoremap <leader>f0 :set foldlevel=0<CR>
+nnoremap <leader>f1 :set foldlevel=1<CR>
+nnoremap <leader>f2 :set foldlevel=2<CR>
+nnoremap <leader>f3 :set foldlevel=3<CR>
+nnoremap <leader>f4 :set foldlevel=4<CR>
+nnoremap <leader>f5 :set foldlevel=5<CR>
+nnoremap <leader>f6 :set foldlevel=6<CR>
+nnoremap <leader>f7 :set foldlevel=7<CR>
+nnoremap <leader>f8 :set foldlevel=8<CR>
+nnoremap <leader>f9 :set foldlevel=9<CR>
+
+
+"Ranger mapping
+nnoremap <leader>fe :call Ranger()<CR>
+
+"awesomeness make jj in insertmode escape to normal. never press <esc> again!
+inoremap jj <Esc>
+
+"I really hate that things don't auto-center
+nnoremap G Gzz
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap } }zz
+nnoremap { {zz
+
+
+"retab everything
+ noremap <leader>rt :set expandtab<CR>:retab<CR>
+
+" Just to beginning and end of lines easier. From http://vimbits.com/bits/16
+noremap H ^
+noremap L $
+
+" nnoremap <C-m> :MaximizerToggle<CR>
+nnoremap <leader>hl :set hlsearch!<CR>
+
+" close buffer with leader-q
+" and safe & close buffer with leader-wq
+nnoremap <leader>q :bd<CR>
+nnoremap <leader>wq :w<CR>:bd<CR>
+
+" configure search
+set hlsearch
+" nnoremap <CR> :nohlsearch<CR><CR>
+noremap <F3> :set hlsearch! hlsearch?<CR>
+
+" NerdTree Settings
+map <F2> :NERDTreeToggle<CR>
+map <silent> <C-F2> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
+autocmd BufEnter * lcd %:p:h
+
 " ---------------------------------------------------------------------------------------------
 " YouCompleteMe
 " ---------------------------------------------------------------------------------------------
@@ -237,22 +312,6 @@ let g:airline_theme='base16'
 
 
 
-" configure search
-set hlsearch
-" nnoremap <CR> :nohlsearch<CR><CR>
-noremap <F3> :set hlsearch! hlsearch?<CR>
-
-
-
-" filetype plugin indent on
-filetype plugin on
-filetype on
-
-
-" NerdTree Settings
-map <F2> :NERDTreeToggle<CR>
-map <silent> <C-F2> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
-autocmd BufEnter * lcd %:p:h
 
 " ctrl p should ignore useless files
 let ctrlp_filter_greps = "".
@@ -291,6 +350,32 @@ augroup Binary
 augroup END
 
 
+" Use ranger as vim file manager
+
+fun! Ranger()
+  let tmpfile = tempname()
+  if a:0 > 0 && a:1 != ""
+    let dir = a:1
+  elseif expand("%")
+    let dir = "."
+  else
+    let dir = expand("%:p:h")
+  endif
+
+  exe 'silent !ranger --choosefile='.tmpfile dir
+  if filereadable(tmpfile)
+    exe 'edit' readfile(tmpfile)[0]
+    call delete(tmpfile)
+  endif
+  redraw!
+
+  let result = 0
+  if filereadable(tmpfile)
+      silent let result = system('cat '. tmpfile)
+  endif
+  silent call system('rm -rf ' . tmpfile)
+  return result
+endfun
 
 " Syntastic Syntax Check
 set statusline+=%#warningmsg#

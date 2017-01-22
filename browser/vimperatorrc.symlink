@@ -4,3 +4,8 @@
 :hi CmdLine -append font-size:12px
 
 :set hintchars=hjklasdfguiqwertnmxcvb
+
+:inoremap <C-a> <C-v><C-a>
+
+:inoremap <C-a> <C-Esc><C-a><C-Esc>
+
