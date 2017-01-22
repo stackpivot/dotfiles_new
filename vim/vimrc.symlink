@@ -13,6 +13,10 @@ map ; :
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
 
+" scrolling
+set scrolloff=8         " Number of lines from vertical edge to start scrolling
+set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
+set sidescroll=1       " Number of cols to scroll at a time
 " ---------------------------------------------------------------------------------------------
 " Vundle Plugins
 " ---------------------------------------------------------------------------------------------
@@ -139,6 +143,18 @@ inoremap  <Right>  <nop>
 vnoremap < <gv
 vnoremap > >gv
 
+
+" Drag current lines
+noremap <A-j> :m+<CR>
+noremap <A-k> :m-2<CR>
+inoremap <A-j> <Esc>:m+<CR>
+inoremap <A-k> <Esc>:m-2<CR>
+vnoremap <A-j> :m'>+<CR>gv
+vnoremap <A-k> :m-2<CR>gv
+
+
+
+
 " Keymaping for dragvisual
 vmap <expr> H DVB_Drag('left')
 vmap <expr> J DVB_Drag('down')
@@ -157,7 +173,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
+map <leader>b gn
 
 " use ctags for tag integration
 " TODO: maybe i should not use this and use ycm?
@@ -211,6 +227,7 @@ nnoremap <leader>fe :call Ranger()<CR>
 "awesomeness make jj in insertmode escape to normal. never press <esc> again!
 inoremap jj <Esc>
 
+
 "I really hate that things don't auto-center
 nnoremap G Gzz
 nnoremap n nzz
@@ -226,6 +243,13 @@ nnoremap { {zz
 noremap H ^
 noremap L $
 
+
+" select all
+map <Leader>a ggVG
+
+" open last buffer
+noremap <Leader><Leader> <C-^>
+
 " nnoremap <C-m> :MaximizerToggle<CR>
 nnoremap <leader>hl :set hlsearch!<CR>
 
@@ -239,10 +263,26 @@ set hlsearch
 " nnoremap <CR> :nohlsearch<CR><CR>
 noremap <F3> :set hlsearch! hlsearch?<CR>
 
+
+" clear search highlight
+noremap <silent><Leader>/ :nohls<CR>
+
 " NerdTree Settings
 map <F2> :NERDTreeToggle<CR>
 map <silent> <C-F2> :NERDTree<CR><C-w>p:NERDTreeFind<CR>
 autocmd BufEnter * lcd %:p:h
+
+" nicer incrementration
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+
+
+" remap Undo
+nnoremap U <C-r>
+" only show cursorline in current window
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorline
 
 " ---------------------------------------------------------------------------------------------
 " YouCompleteMe
@@ -348,6 +388,8 @@ augroup Binary
   au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
+
+
 
 
 " Use ranger as vim file manager
