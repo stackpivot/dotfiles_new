@@ -140,7 +140,6 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 setxkbmap -option ctrl:nocaps
-
 alias subl="subl3"
 
 alias http_python="python2 -m SimpleHTTPServer"

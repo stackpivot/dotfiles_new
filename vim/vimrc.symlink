@@ -6,7 +6,14 @@ set nofoldenable
 filetype plugin on
 filetype on
 let mapleader = "\<Space>"
+
+" Spellcheck
 set spelllang=en,de
+set complete+=kspell
+noremap [z [s
+noremap ]z ]s
+noremap =z z=
+
 set clipboard=unnamed
 map ; :
 
@@ -54,6 +61,9 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 Plugin 'Syntastic'
+
+Plugin 'mbbill/undotree'
+
 
 " Markdown
 Plugin 'vim-pandoc/vim-pandoc'
@@ -205,8 +215,8 @@ noremap j gj
 noremap k gk
 
 " use up and dow arrow to move line
-noremap <up> ddkP
-noremap <down> ddp
+" noremap <up> ddkP
+" noremap <down> ddp
 
 " Code folding options
 nnoremap <leader>f0 :set foldlevel=0<CR>
@@ -280,9 +290,21 @@ nnoremap - <C-x>
 
 " remap Undo
 nnoremap U <C-r>
+nnoremap <F1> :UndotreeToggle<cr>
+
+
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
+
+
 " only show cursorline in current window
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
+
+
 
 " ---------------------------------------------------------------------------------------------
 " YouCompleteMe
