@@ -42,7 +42,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'Tagbar'
-Plugin 'Auto-Pairs'
+" Plugin 'Auto-Pairs'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'terryma/vim-multiple-cursors'
@@ -62,18 +62,29 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Syntastic'
 
+Plugin 'blueyed/vim-diminactive'
 Plugin 'mbbill/undotree'
 
+Plugin 'kien/rainbow_parentheses.vim'
+
+" Pair Programming
+Plugin 'FredKSchott/CoVim'
 
 " Markdown
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
+" Distraction free
+Plugin 'junegunn/goyo.vim'
+
+" Spotify
+Bundle 'takac/vim-spotifysearch'
 " Themes
 Plugin 'chriskempson/base16-vim'
 Plugin 'cdmedia/itg_flat_vim'
 Plugin 'morhetz/gruvbox'
-
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'jonathanfilip/vim-lucius'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,9 +97,10 @@ filetype plugin indent on    " required
 " Make shit pretty, look & feel
 " ---------------------------------------------------------------------------------------------
 syntax on
-let base16colorspace=256
-colorscheme gruvbox
-set background=dark
+"let base16colorspace=256
+colorscheme lucius
+"colorscheme quantum
+set background=light
 set nocompatible
 let python_highlight_all=1
 
@@ -164,7 +176,6 @@ vnoremap <A-k> :m-2<CR>gv
 
 
 
-
 " Keymaping for dragvisual
 vmap <expr> H DVB_Drag('left')
 vmap <expr> J DVB_Drag('down')
@@ -192,7 +203,6 @@ command! MakeTags !ctags -R .
 " use g^] for ambiguous tags
 " use ^t to jump back up the tag stack
 
-
 " next buffer
 map gn :bn<cr>
 map gp :bp<cr>
@@ -217,7 +227,6 @@ noremap k gk
 " use up and dow arrow to move line
 " noremap <up> ddkP
 " noremap <down> ddp
-
 " Code folding options
 nnoremap <leader>f0 :set foldlevel=0<CR>
 nnoremap <leader>f1 :set foldlevel=1<CR>
@@ -370,11 +379,35 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set ttimeoutlen=50
-let g:airline_theme='base16'
+"let g:airline_theme='base16'
+let g:airline_theme='lucius'
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
 
 
-
-
+"let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 " ctrl p should ignore useless files
 let ctrlp_filter_greps = "".
     \ "egrep -iv '\\.(" .
