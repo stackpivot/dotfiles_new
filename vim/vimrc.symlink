@@ -74,6 +74,10 @@ Plugin 'FredKSchott/CoVim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
+" vim dictionary, prosa
+Plugin 'reedes/vim-lexical'
+
+
 " Distraction free
 Plugin 'junegunn/goyo.vim'
 
@@ -335,7 +339,55 @@ let g:ycm_complete_in_strings = 1
 
 
 
+
+
 " ---------------------------------------------------------------------------------------------
+" lexical dictionary
+" ---------------------------------------------------------------------------------------------
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+let g:lexical#spelllang = ['en_us','de_de',]
+
+let g:lexical#thesaurus = ['~/.dotfiles/lexical/words.txt',]
+let g:lexical#thesaurus_key = '<leader>t'
+let g:lexical#dictionary_key = '<leader>k'
+
+"
+"Spell-check
+"
+"These are the Normal mode commands:
+"
+"]s   - Move to next misspelled word after the cursor.
+"[s   - Like ]s but search backwards
+"]S   - Like ]s but only stop at bad words, not at rare words or words for
+"another region.
+"[S   - Like ]S but search backwards.
+"With the following key mappings you can use Visual mode selection to select
+"the characters (including whitespace). Otherwise the word under the cursor is
+"used.
+"
+"zg   - Mark as a good word
+"
+"zw   - Like zg but mark the word as a wrong (bad) word.
+"
+"zug - Unmark as good word
+"
+"zuw - Unmark as wrong (bad) word
+"
+"z=   - For the word under/after the cursor suggest correctly spelled words
+"
+"1z=  - Use the first suggestion, without prompting
+"
+". - Redo - repeat last word replacement
+"
+":spellr - Repeat the replacement done by z= for all matches with the replaced
+"word in the current window
+
+" -------------------------------------------------------------------------------------------
 " UltiSnips Snippets
 " ---------------------------------------------------------------------------------------------
 let g:UltiSnipsExpandTrigger="<C-Space>"
