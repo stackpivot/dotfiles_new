@@ -14,9 +14,9 @@ noremap [z [s
 noremap ]z ]s
 noremap =z z=
 
-set clipboard=unnamed
+" set clipboard=unnamed
 map ; :
-
+set backspace=indent,eol,start
 " automatically reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
 
@@ -94,7 +94,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 
-
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 
 " ---------------------------------------------------------------------------------------------
@@ -102,9 +104,9 @@ filetype plugin indent on    " required
 " ---------------------------------------------------------------------------------------------
 syntax on
 "let base16colorspace=256
-colorscheme lucius
+colorscheme gruvbox
 "colorscheme quantum
-set background=light
+set background=dark
 set nocompatible
 let python_highlight_all=1
 
@@ -425,6 +427,7 @@ if has("autocmd")
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 "set guifont=Sauce\ Code\ Powerline\ Semibold:h11
+"set guifont=Source\ Code\ Pro\ for\ Powerline:h11
 set guifont=Fira\ Mono:h11
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'

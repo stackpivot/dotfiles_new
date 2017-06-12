@@ -37,8 +37,8 @@ setw -g pane-base-index 1
 # split window and fix path for tmux 1.9
 bind | split-window -h -c "#{pane_current_path}"
 bind - split-window -v -c "#{pane_current_path}"
-unbind '"'
-unbind %
+#unbind '"'
+#unbind %
 
 
 # reload config file
@@ -85,8 +85,8 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 set -g @plugin 'jimeh/tmux-themepack'
-set -g @themepack 'default/blue'
-
+# set -g @themepack 'default/blue'
+set -g @themepack 'basic'
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
 # set -g @plugin 'git@github.com/user/plugin'
@@ -94,3 +94,4 @@ set -g @themepack 'default/blue'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
+
