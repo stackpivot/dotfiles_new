@@ -85,6 +85,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 set -g @plugin 'jimeh/tmux-themepack'
+set -g @plugin 'tmux-plugins/tmux-sessionist'
 # set -g @themepack 'default/blue'
 set -g @themepack 'basic'
 # Other examples:
@@ -100,7 +101,7 @@ run '~/.tmux/plugins/tpm/tpm'
 ######################
 ### DESIGN CHANGES ###
 ######################
-
+#set -g status-left '#{?client_prefix,#[bg=colour245 fg=colour233 bold],#[fg=colour155]} (#S)'
 # panes
 set -g pane-border-fg black
 set -g pane-active-border-fg brightred
@@ -208,11 +209,11 @@ bind -n S-right next
 bind -n S-C-left  swap-window -t -1
 bind -n S-C-right swap-window -t +1
 
-bind -n M-F11 set -qg status-bg colour22
+bind -n M-F11 set -qg status-bg colour240
 bind -n M-F12 set -qg status-bg colour234
 bind -n S-up \
    send-keys M-F12 \; \
-   set -qg status-bg colour22 \; \
+   set -qg status-bg colour240 \; \
    unbind -n S-left \; \
    unbind -n S-right \; \
    unbind -n S-C-left \; \
