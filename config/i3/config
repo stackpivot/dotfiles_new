@@ -12,7 +12,7 @@ set $mod Mod4
 smart_gaps on
 smart_borders on
 
-gaps inner 4
+gaps inner 1
 gaps outer 0
 
 
@@ -60,8 +60,8 @@ bindsym $mod+F11 exec "/home/jon/.screenlayout/thinkpad.sh"
 # change focus
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus left
-bindsym $mod+odiaeresis focus right
+bindsym $mod+h focus left
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -70,10 +70,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -82,7 +82,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -307,9 +307,9 @@ set $status_bg     #000000aa
 bar {
         Modifier $mod
         #status_command i3status
-        status_command i3blocks -c /home/jon/.config/i3blocks/config
+        status_command i3blocks -c /home/mov/.config/i3blocks/config
         i3bar_command i3bar -t
-        font pango:Hack, FontAwesome 10
+        font pango:Hack, FontAwesome 8
         #mode hide
         height 22
         position bottom

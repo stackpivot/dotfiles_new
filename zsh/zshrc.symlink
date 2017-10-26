@@ -14,7 +14,7 @@ HISTFILE=~/.zsh_history
 # DEFAULT=USER="cpyriot"
 autoload -Uz promptinit
 promptinit
-prompt minimal
+#prompt minimal
 bindkey "^R"  history-incremental-search-backward
 bindkey "^[[1;5C" emacs-forward-word
 bindkey "^[[1;5D" backward-word
@@ -148,7 +148,6 @@ VISUAL=vim
 printf '[4 q'
 
 alias vim="TERM=screen-256color vim"
-unalias rm
 # bindkey for vim mode. Press ESC
 bindkey -v
 # killall gpg-agent
@@ -187,3 +186,4 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 gpgconf --create-socketdir
 
 xmodmap ~/.dotfiles/config/i3/umlaute
+setxkbmap us
