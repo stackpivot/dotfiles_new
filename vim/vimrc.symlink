@@ -25,6 +25,9 @@ au BufWritePost .vimrc so ~/.vimrc
 set scrolloff=8         " Number of lines from vertical edge to start scrolling
 set sidescrolloff=15 " Number of cols from horizontal edge to start scrolling
 set sidescroll=1       " Number of cols to scroll at a time
+
+
+
 " ---------------------------------------------------------------------------------------------
 " Vundle Plugins
 " ---------------------------------------------------------------------------------------------
@@ -41,10 +44,14 @@ Plugin 'ascenator/L9', {'name': 'newL9'}
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'tpope/vim-commentary'
 
 Plugin 'Tagbar'
 " Plugin 'Auto-Pairs'
@@ -62,7 +69,6 @@ Plugin 'fisadev/dragvisuals.vim'
 " Text completion
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'unterzicht/vim-virtualenv'
-
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -344,7 +350,25 @@ autocmd WinEnter * set cursorline
 
 
 
+" ---------------------------------------------------------------------------------------------
+" GIT TIG version control
+" ---------------------------------------------------------------------------------------------
+let g:tig_executable = 'tig'
+let g:tig_default_command = 'status'
+" let g:tig_on_exit = 'bw!'
 
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 
 " ---------------------------------------------------------------------------------------------
