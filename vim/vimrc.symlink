@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 " filetype off                  " required
 set nofoldenable
 
+set t_Co=256
 " filetype plugin indent on
 filetype plugin on
 filetype on
@@ -33,10 +34,14 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'jonas/tig'
+
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
+
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -48,6 +53,7 @@ Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-surround'
 
 " Making math , average stuff easier, mark stuff in visual mode press ++
 Plugin 'nixon/vim-vmath'
@@ -56,6 +62,8 @@ Plugin 'fisadev/dragvisuals.vim'
 " Text completion
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'unterzicht/vim-virtualenv'
+
+
 " Snippets
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -74,9 +82,14 @@ Plugin 'FredKSchott/CoVim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
+" python
+Plugin 'vim-python/python-syntax'
+
 " vim dictionary, prosa
 Plugin 'reedes/vim-lexical'
 
+" solidity ethereum
+Plugin 'ethereum/vim-solidity'
 
 " Distraction free
 Plugin 'junegunn/goyo.vim'
@@ -109,6 +122,8 @@ colorscheme gruvbox
 set background=dark
 set nocompatible
 let python_highlight_all=1
+let g:python_highlight_all=1
+
 
 " Add line numbers
 set number
@@ -130,9 +145,11 @@ set tabstop=3
 set shiftwidth=3
 set softtabstop=3
 set expandtab
-
+set showbreak=↳
 " autoload files when changed externally
 set autoread
+
+
 
 
 set nolist  " list disables linebreak
@@ -195,12 +212,18 @@ map <silent> <S-Left> <c-w>h
 map <silent> <S-Up> <c-w>k
 map <silent> <S-Down> <c-w>j
 
+
+
+
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 map <leader>b gn
+
+noremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " use ctags for tag integration
 " TODO: maybe i should not use this and use ycm?
@@ -321,6 +344,9 @@ autocmd WinEnter * set cursorline
 
 
 
+
+
+
 " ---------------------------------------------------------------------------------------------
 " YouCompleteMe
 " ---------------------------------------------------------------------------------------------
@@ -427,15 +453,15 @@ if has("autocmd")
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 "set guifont=Sauce\ Code\ Powerline\ Semibold:h11
-"set guifont=Source\ Code\ Pro\ for\ Powerline:h11
-set guifont=Fira\ Mono:h11
+set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+"  set guifont=Fira\ Mono:h11
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set ttimeoutlen=50
-"let g:airline_theme='base16'
-let g:airline_theme='lucius'
+let g:airline_theme='base16'
+" let g:airline_theme='lucius'
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -533,11 +559,13 @@ endfun
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 let g:syntastic_loc_list_height=3
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/bin/python2.7'
 
 
 " Multi Cursor

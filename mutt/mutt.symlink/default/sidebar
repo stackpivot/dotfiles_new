@@ -1,0 +1,6 @@
+# these only work with the sidebar patch
+set sidebar_visible=yes                          # yep
+set sidebar_width=30                            # enough for me
+#set sidebar_delim='|'
+
+# vim:ft=muttrc:

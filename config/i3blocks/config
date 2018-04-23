@@ -51,7 +51,7 @@ border=#458588
 
 
 [weather]
-command=~/.config/i3blocks/weather.sh berlin
+command=~/.config/i3blocks/weather.sh Dubai
 interval=1800
 border=#458588
 

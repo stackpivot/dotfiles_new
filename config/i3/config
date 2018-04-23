@@ -16,7 +16,6 @@ gaps inner 1
 gaps outer 0
 
 
-exec --no-startup-id setxkbmap de
 exec --no-startup-id feh --bg-center ~/.wallpaper.jpg
 exec --no-startup-id compton --config ~/.config/compton.conf &
 
@@ -52,10 +51,10 @@ bindsym $mod+Shift+c kill
 # bindsym $mod+r exec "dmenu_run -b -nb \#3f3f3f -nf \#ecdccc -sf \#3f3f3f -sb \#ecdccc
 
 # lock screen
-bindsym $mod+Ctrl+End exec "/home/jon/.config/i3/pixellock.sh"
-bindsym $mod+End exec "/home/jon/.config/i3/pixellock.sh"
-bindsym $mod+F12 exec "/home/jon/.config/i3/powermenu"
-bindsym $mod+F11 exec "/home/jon/.screenlayout/thinkpad.sh"
+bindsym $mod+Ctrl+End exec "/home/mov/.config/i3/pixellock.sh"
+bindsym $mod+End exec "/home/mov/.config/i3/lock.sh"
+bindsym $mod+F12 exec "/home/mov/.config/i3/powermenu"
+bindsym $mod+F11 exec "/home/mov/.screenlayout/thinkpad.sh"
 
 # change focus
 bindsym $mod+j focus down
@@ -344,6 +343,7 @@ bar {
 # start dmenu (a program launcher)
 #bindsym $mod+r exec "dmenu_run -b -nb \#073642 -nf \#ecdccc -sf \#3f4f3f -sb \#cb4b16
 bindsym $mod+r exec "rofi /usr/bin/urxvt -sidebar-mode -show run -terminal /usr/bin/termite -hldg \#cb4b16 -hlfg \#fdf6e3 -fg \#4f4f4f -bg \#1d1f21"
+bindsym $mod+p exec "export GNUPGHOME=~/.gnupg/ledger/; $HOME/.config/i3/rofi-pass/rofi-pass"
 bindsym Mod1+Tab exec "rofi -show window"
 
 

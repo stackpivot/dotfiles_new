@@ -1,0 +1,23 @@
+[general]
+ui = ttyui
+accounts = Gmail
+pythonfile = ~/.dotfiles/mutt/offlineimap.py
+
+[Account Gmail]
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
+maxage = 90
+autorefresh = 0.5
+
+[Repository Gmail-Local]
+type = Maildir
+localfolders = ~/.mail/privateGmail
+
+[Repository Gmail-Remote]
+type = Gmail
+remoteuser = jon.barg@gmail.com
+#remotepass = secret
+remotepasseval = mailpasswd("privateGmail")
+realdelete = no
+maxconnections = 4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt

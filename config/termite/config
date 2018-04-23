@@ -1,6 +1,6 @@
 [options]
 #font = DejaVu Sans 11
-font = Source Code Pro for Powerline 9
+font = Source Code Pro 9
 browser = firefox
 clickable_url = true
 dynamic_title = true
