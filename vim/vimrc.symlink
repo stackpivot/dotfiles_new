@@ -41,6 +41,8 @@ Plugin 'gregsexton/gitv'
 Plugin 'junegunn/gv.vim'
 Plugin 'int3/vim-extradite'
 
+Plugin 'Conque-Shell'
+
 
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
