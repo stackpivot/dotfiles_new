@@ -38,6 +38,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'jonas/tig'
+Plugin 'gregsexton/gitv'
 
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -51,10 +52,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'tpope/vim-commentary'
 
 Plugin 'Tagbar'
-" Plugin 'Auto-Pairs'
+Plugin 'rstacruz/vim-closer'
+
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'terryma/vim-multiple-cursors'
@@ -351,8 +352,12 @@ autocmd WinEnter * set cursorline
 
 
 " ---------------------------------------------------------------------------------------------
-" GIT TIG version control
+" GIT TIG version control git
 " ---------------------------------------------------------------------------------------------
+" nnoremap <Leader>gv :Gitv --all<CR>
+command! Ghistory Gitv! --all
+
+
 let g:tig_executable = 'tig'
 let g:tig_default_command = 'status'
 " let g:tig_on_exit = 'bw!'
