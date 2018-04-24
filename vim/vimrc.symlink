@@ -36,40 +36,68 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+
+
+
+" ---------------------------------------------------------------------------------------------
+" git and version control plugins
+" ---------------------------------------------------------------------------------------------
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'junegunn/gv.vim'
 Plugin 'int3/vim-extradite'
 
-Plugin 'Conque-Shell'
-
-
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'ascenator/L9', {'name': 'newL9'}
-
-Plugin 'scrooloose/nerdtree'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+
+" ---------------------------------------------------------------------------------------------
+" navigation
+" ---------------------------------------------------------------------------------------------
+
+Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'fisadev/dragvisuals.vim'
+
+
+" ---------------------------------------------------------------------------------------------
+" development environment
+" ---------------------------------------------------------------------------------------------
+
+Plugin 'Tagbar'
+Plugin 'rstacruz/vim-closer'
+Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+
+" ---------------------------------------------------------------------------------------------
+" eye candy
+" ---------------------------------------------------------------------------------------------
+
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" Themes
+Plugin 'chriskempson/base16-vim'
+Plugin 'cdmedia/itg_flat_vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'jonathanfilip/vim-lucius'
 
-Plugin 'Tagbar'
-Plugin 'rstacruz/vim-closer'
 
+" ---------------------------------------------------------------------------------------------
+" misc
+" ---------------------------------------------------------------------------------------------
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " for HTML tags
+Plugin 'ascenator/L9', {'name': 'newL9'} " vim script libary
 Plugin 'benmills/vimux'
-Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround'
 
 " Making math , average stuff easier, mark stuff in visual mode press ++
 Plugin 'nixon/vim-vmath'
-Plugin 'fisadev/dragvisuals.vim'
 
 " Text completion
 Bundle 'Valloric/YouCompleteMe'
@@ -105,14 +133,6 @@ Plugin 'ethereum/vim-solidity'
 " Distraction free
 Plugin 'junegunn/goyo.vim'
 
-" Spotify
-Bundle 'takac/vim-spotifysearch'
-" Themes
-Plugin 'chriskempson/base16-vim'
-Plugin 'cdmedia/itg_flat_vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'jonathanfilip/vim-lucius'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -262,8 +282,13 @@ noremap j gj
 noremap k gk
 
 " use up and dow arrow to move line
-" noremap <up> ddkP
-" noremap <down> ddp
+noremap <up> ddkP
+noremap <down> ddp
+
+
+" ---------------------------------------------------------------------------------------------
+" code folding shit
+" ---------------------------------------------------------------------------------------------
 " Code folding options
 nnoremap <leader>f0 :set foldlevel=0<CR>
 nnoremap <leader>f1 :set foldlevel=1<CR>
@@ -275,6 +300,24 @@ nnoremap <leader>f6 :set foldlevel=6<CR>
 nnoremap <leader>f7 :set foldlevel=7<CR>
 nnoremap <leader>f8 :set foldlevel=8<CR>
 nnoremap <leader>f9 :set foldlevel=9<CR>
+
+" Code folding doc
+" zf#j creates a fold from the cursor down # lines.
+" zf/string creates a fold from the cursor to string.
+" zj moves the cursor to the next fold.
+" zk moves the cursor to the previous fold.
+" zo opens a fold at the cursor.
+" zO opens all folds at the cursor.
+" zm increases the foldlevel by one.
+" zM closes all open folds.
+" zr decreases the foldlevel by one.
+" zR decreases the foldlevel to zero -- all folds will be open.
+" zd deletes the fold at the cursor.
+" zE deletes all folds.
+" [z move to start of open fold.
+" ]z move to end of open fold.
+
+
 
 
 "Ranger mapping
@@ -357,7 +400,7 @@ autocmd WinEnter * set cursorline
 " ---------------------------------------------------------------------------------------------
 " nnoremap <Leader>gv :Gitv --all<CR>
 command! Ghistory Gitv! --all
-let g:Gitv_DoNotMapCtrlKey
+let g:Gitv_DoNotMapCtrlKey=1
 " Manual for gitv
 
 " This is a list of key mappings that will work only in the gitv browser window.
