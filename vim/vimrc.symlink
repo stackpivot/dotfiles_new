@@ -57,6 +57,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'wincent/command-t'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'fisadev/dragvisuals.vim'
 
@@ -76,6 +77,12 @@ Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+
+" creates zsh theme like vim airline
+" :PromptlineSnapshot ~/.shell_prompt.sh airline
+" In .zshrc add: source ~/.shell_prompt.sh
+Bundle 'edkolev/promptline.vim'
 
 " Themes
 Plugin 'chriskempson/base16-vim'
@@ -203,6 +210,7 @@ set nolist  " list disables linebreak
 " build in autocompletion
 map <leader>n <C-X><C-K>
 
+
 " remove crapy help
 inoremap <F1> <nop>
 nnoremap <F1> <nop>
@@ -327,11 +335,11 @@ nnoremap <leader>f9 :set foldlevel=9<CR>
 " ]z move to end of open fold.
 
 " saving folds
-augroup AutoSaveFolds
-autocmd!
-   autocmd BufWinLeave * mkview
-   autocmd BufWinEnter * silent loadview
-augroup END
+" augroup AutoSaveFolds
+" autocmd!
+"    autocmd BufWinLeave * mkview
+"    autocmd BufWinEnter * silent loadview
+" augroup END
 
 
 
@@ -710,12 +718,12 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h11
 "  set guifont=Fira\ Mono:h11
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set ttimeoutlen=50
-let g:airline_theme='base16'
+" let g:airline_theme='base16'
 let g:airline_theme='papercolor'
-" let g:airline_theme='lucius'
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -743,27 +751,10 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-" ctrl p should ignore useless files
-let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|pdf|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
-    \ ")'"
 
-let my_ctrlp_git_command = "" .
-    \ "cd %s && git ls-files | " .
-    \ ctrlp_filter_greps
+nnoremap <silent> <leader>b :CommandTBuffer<CR>
+nnoremap <silent> <leader>t :CommandT<CR>
 
-if has("unix")
-    let my_ctrlp_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
-endif
-
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
 nmap <F8> :TagbarToggle<CR>
 
