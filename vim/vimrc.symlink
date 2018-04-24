@@ -83,6 +83,10 @@ Plugin 'cdmedia/itg_flat_vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tyrannicaltoucan/vim-quantum'
 Plugin 'jonathanfilip/vim-lucius'
+Plugin 'summerfruit256.vim'
+Plugin 'NLKNguyen/papercolor-theme'
+
+
 
 
 " ---------------------------------------------------------------------------------------------
@@ -109,7 +113,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Syntastic'
 
-Plugin 'blueyed/vim-diminactive'
+" Plugin 'blueyed/vim-diminactive'
 Plugin 'mbbill/undotree'
 
 Plugin 'kien/rainbow_parentheses.vim'
@@ -148,9 +152,11 @@ endif
 " ---------------------------------------------------------------------------------------------
 syntax on
 "let base16colorspace=256
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme PaperColor
 "colorscheme quantum
-set background=dark
+" set background=dark
+set background=light
 set nocompatible
 let python_highlight_all=1
 let g:python_highlight_all=1
@@ -280,8 +286,8 @@ noremap j gj
 noremap k gk
 
 " use up and dow arrow to move line
-noremap <up> ddkP
-noremap <down> ddp
+" noremap <up> ddkP
+" noremap <down> ddp
 
 
 " ---------------------------------------------------------------------------------------------
@@ -320,6 +326,12 @@ nnoremap <leader>f9 :set foldlevel=9<CR>
 " [z move to start of open fold.
 " ]z move to end of open fold.
 
+" saving folds
+augroup AutoSaveFolds
+autocmd!
+   autocmd BufWinLeave * mkview
+   autocmd BufWinEnter * silent loadview
+augroup END
 
 
 
@@ -702,6 +714,7 @@ set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set ttimeoutlen=50
 let g:airline_theme='base16'
+let g:airline_theme='papercolor'
 " let g:airline_theme='lucius'
 
 let g:rbpt_colorpairs = [
