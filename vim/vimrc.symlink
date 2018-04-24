@@ -186,8 +186,6 @@ set autoread
 set nolist  " list disables linebreak
 " Code fold?!
 "collapse and fold
-"set foldmethod=indent
-"set foldlevel=99
 "nnoremap <space> za
 " Setting a vertical ruler at char x
 " set colorcolumn=85
@@ -290,6 +288,10 @@ noremap <down> ddp
 " code folding shit
 " ---------------------------------------------------------------------------------------------
 " Code folding options
+" autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+" autocmd FileType python setlocal foldmethod=syntax
+
+
 nnoremap <leader>f0 :set foldlevel=0<CR>
 nnoremap <leader>f1 :set foldlevel=1<CR>
 nnoremap <leader>f2 :set foldlevel=2<CR>
@@ -309,6 +311,7 @@ nnoremap <leader>f9 :set foldlevel=9<CR>
 " zo opens a fold at the cursor.
 " zO opens all folds at the cursor.
 " zm increases the foldlevel by one.
+" zc will close one fold
 " zM closes all open folds.
 " zr decreases the foldlevel by one.
 " zR decreases the foldlevel to zero -- all folds will be open.
