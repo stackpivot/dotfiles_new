@@ -58,6 +58,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'wincent/command-t'
+set rtp+=/usr/bin/fzf
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'fisadev/dragvisuals.vim'
 Plugin 'kshenoy/vim-signature'
@@ -100,9 +103,11 @@ Plugin 'NLKNguyen/papercolor-theme'
 " ---------------------------------------------------------------------------------------------
 " misc
 " ---------------------------------------------------------------------------------------------
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " for HTML tags
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " for HTML tags
 Plugin 'ascenator/L9', {'name': 'newL9'} " vim script libary
 Plugin 'benmills/vimux'
+Plugin 'vimwiki/vimwiki'
+
 
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -298,6 +303,13 @@ noremap k gk
 " noremap <up> ddkP
 " noremap <down> ddp
 
+" ---------------------------------------------------------------------------------------------
+" vimwiki
+" ---------------------------------------------------------------------------------------------
+let wiki = {}
+let wiki.path = '~/.wiki/'
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let g:vimwiki_hl_headers=1
 
 " ---------------------------------------------------------------------------------------------
 " code folding shit
@@ -306,7 +318,7 @@ noremap k gk
 " autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 " autocmd FileType python setlocal foldmethod=syntax
 
-set foldcolumn=1
+set foldcolumn=2
 
 nnoremap <leader>f0 :set foldlevel=0<CR>
 nnoremap <leader>f1 :set foldlevel=1<CR>
@@ -760,6 +772,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 nnoremap <silent> <leader>b :CommandTBuffer<CR>
 nnoremap <silent> <leader>t :CommandT<CR>
+
 
 
 nmap <F8> :TagbarToggle<CR>
