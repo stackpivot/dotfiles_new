@@ -230,33 +230,10 @@ bindsym $mod+F3 [con_mark="F3"] focus
 bindsym $mod+F4 [con_mark="F4"] focus
 
 
-# setting solarized colorscheme vars
-
-# solarized accents
-set $yellow #b58900
-set $orange #cb4b16
-set $red #dc322f
-set $magenta #d33682
-set $violet #6c71c4
-set $blue #268bd2
-set $cyan #2aa198
-set $green #859900
-
-# solarized dark
-set $baseA3 #002b36
-set $baseA2 #073642
-set $baseA1 #586e75
-set $baseA0 #657b83
-set $baseB0 #839496
-set $baseB1 #93a1a1
-set $baseB2 #eee8d5
-set $baseB3 #fdf6e3
-set $custom #1c5766
-
-
+set $darkBackGround #2F343A
 
 # $i3-background
-exec_always --no-startup-id xsetroot -solid '$baseA2'
+exec_always --no-startup-id xsetroot -solid '$darkBackGround'
 
 
 # colors
@@ -264,41 +241,27 @@ exec_always --no-startup-id xsetroot -solid '$baseA2'
 #client.focused      #FF0000 #ecdccc #3f3f3f #B0363E
 #client.unfocused    #0f0f0f #3f3f3f #ecdccc #030303
 #client.urgent       #ff0000 #900000 #ffffff #900000
-client.focused $green $green $baseB3 $blue
-client.focused_inactive $cyan $cyan $baseB2 $violet
-client.unfocused $baseA2 $baseA2 $baseB1 $baseA1
+#client.focused $green $green $baseB3 $blue
+#client.focused_inactive $cyan $cyan $baseB2 $violet
+#client.unfocused $baseA2 $baseA2 $baseB1 $baseA1
 #client.urgent $orange $orange $baseB3 $red
-client.urgent $yellow $yellow $baseB3 $orange
+# client.urgent $yellow $yellow $baseB3 $orange
 
+# Pro tip to generate colorschemes:
+# https://thomashunter.name/i3-configurator/
+
+# class                 border  bground text    indicator child_border
+client.focused          #2F343A #32A036 #FFFFFF #2E9EF4   #2D9131
+client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+client.urgent           #2F343A #DB4040 #FFFFFF #900000   #900000
+client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+client.background       #FFFFFF
 
 
 # wait 500ms before resetting the urgent hint
 force_display_urgency_hint 1000 ms
-
-
-set $darkBackGround #1d1f21
-
-# solarized colors
-
-set $background     #002b36
-set $background_hi  #073642
-set $secondary      #586e75
-set $primary        #839496
-set $emphasized     #93a1a1
-
-# accent colors
-
-set $yellow        #b58900
-set $orange        #cb4b16
-set $red           #dc322f
-set $magenta       #d33682
-set $violet        #6c71c4
-set $blue          #268bd2
-set $cyan          #2aa198
-set $green         #859900
-
-set $status_bg     #000000aa
-
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -313,26 +276,37 @@ bar {
         height 22
         position bottom
 
-        colors {
+        #colors {
 
-               # status
-                 separator #ecdccc
-                 #background $darkBackGround
-                 background $status_bg
-                 statusline $baseB2
-                 ###################
-                 # solarized (clean)
-                 ###################
-                 # workclass border backgr. text
-                 #focused_workspace $blue $blue $baseA3
-                 #active_workspace $cyan $cyan $baseA2
-                 #inactive_workspace $baseA2 $baseA2 $baseB1
-                 #urgent_workspace $orange $orange $baseB3
+        #       # status
+        #         separator #ecdccc
+        #         #background $darkBackGround
+        #         background $status_bg
+        #         statusline $baseB2
+        #         ###################
+        #         # solarized (clean)
+        #         ###################
+        #         # workclass border backgr. text
+        #         #focused_workspace $blue $blue $baseA3
+        #         #active_workspace $cyan $cyan $baseA2
+        #         #inactive_workspace $baseA2 $baseA2 $baseB1
+        #         #urgent_workspace $orange $orange $baseB3
 
-            focused_workspace #3f3f3f #ecdccc $darkBackGround
-            active_workspace #3f3f3f #3f3f3f #ecdccc
-            inactive_workspace #3f3f3f #003f3f3f #ecdccc
-            urgent_workspace #ff0000 #ff0000 #ffffff
+        #    focused_workspace #3f3f3f #ecdccc $darkBackGround
+        #    active_workspace #3f3f3f #3f3f3f #ecdccc
+        #    inactive_workspace #3f3f3f #003f3f3f #ecdccc
+        #    urgent_workspace #ff0000 #ff0000 #ffffff
+        #}
+       colors {
+            background #000000
+            statusline #FFFFFF
+            separator  #666666
+
+            focused_workspace  #277C2A #32A036 #FFFFFF
+            active_workspace   #333333 #222222 #FFFFFF
+            inactive_workspace #333333 #222222 #888888
+            urgent_workspace   #2F343A #DB4040 #FFFFFF
+            binding_mode       #2F343A #900000 #FFFFFF
         }
 }
 
