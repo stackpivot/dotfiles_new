@@ -60,6 +60,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'wincent/command-t'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'fisadev/dragvisuals.vim'
+Plugin 'kshenoy/vim-signature'
 
 
 " ---------------------------------------------------------------------------------------------
@@ -305,7 +306,7 @@ noremap k gk
 " autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
 " autocmd FileType python setlocal foldmethod=syntax
 
-set foldcolumn=2
+set foldcolumn=1
 
 nnoremap <leader>f0 :set foldlevel=0<CR>
 nnoremap <leader>f1 :set foldlevel=1<CR>
