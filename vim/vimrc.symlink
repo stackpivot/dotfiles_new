@@ -43,6 +43,8 @@ Plugin 'VundleVim/Vundle.vim'
 " git and version control plugins
 " ---------------------------------------------------------------------------------------------
 Plugin 'tpope/vim-fugitive'
+
+" :Ghistory
 Plugin 'gregsexton/gitv'
 Plugin 'mhinz/vim-signify'
 Plugin 'junegunn/gv.vim'
