@@ -111,6 +111,12 @@ Plugin 'ascenator/L9', {'name': 'newL9'} " vim script libary
 Plugin 'benmills/vimux'
 Plugin 'vimwiki/vimwiki'
 
+" copy to clipboard:
+" cpw: copy word
+" cpip: copy paragraph
+Plugin 'christoomey/vim-system-copy'
+
+
 
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -161,6 +167,8 @@ filetype plugin indent on    " required
 if $TMUX == ''
     set clipboard+=unnamed
 endif
+let g:system_copy#copy_command='xclip -sel clipboard'
+
 
 
 " ---------------------------------------------------------------------------------------------
