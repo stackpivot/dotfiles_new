@@ -101,6 +101,14 @@ Plugin 'summerfruit256.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 
 
+" ---------------------------------------------------------------------------------------------
+" custom vim movements
+" ---------------------------------------------------------------------------------------------
+
+" copy to clipboard:
+" cpw: copy word
+" cpip: copy paragraph
+Plugin 'christoomey/vim-system-copy'
 
 
 " ---------------------------------------------------------------------------------------------
@@ -111,10 +119,6 @@ Plugin 'ascenator/L9', {'name': 'newL9'} " vim script libary
 Plugin 'benmills/vimux'
 Plugin 'vimwiki/vimwiki'
 
-" copy to clipboard:
-" cpw: copy word
-" cpip: copy paragraph
-Plugin 'christoomey/vim-system-copy'
 
 
 
