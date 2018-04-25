@@ -800,6 +800,14 @@ function! s:change_branche(e)
    echom "Changed branch to" . a:e
 endfunction
 
+command! Gbranch call fzf#run(
+   \ {
+   \ 'source': 'git branch' ,
+   \ 'sink': function('<sid>change_branche'),
+   \ 'options': '-m',
+   \ 'down': '20%'
+   \ })
+
 
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>t :Files<CR>
@@ -818,8 +826,6 @@ nnoremap <silent> <leader>ag :Ag<CR>
 nnoremap <silent> <leader>ct :Tags<CR>
 nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>p :call FzfOmniFiles()<CR>
-nnoremap <silent> <leader>cb :call change_branche()<CR>
-
 
 
 
