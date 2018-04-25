@@ -770,8 +770,8 @@ au Syntax * RainbowParenthesesLoadBraces
 
 
 
-nnoremap <silent> <leader>b :CommandTBuffer<CR>
-nnoremap <silent> <leader>t :CommandT<CR>
+" nnoremap <silent> <leader>b :CommandTBuffer<CR>
+" nnoremap <silent> <leader>t :CommandT<CR>
 
 
 
