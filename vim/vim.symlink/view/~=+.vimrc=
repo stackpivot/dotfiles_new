@@ -27,7 +27,7 @@ setlocal nocindent
 setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
+setlocal colorcolumn=0
 setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
 setlocal commentstring=\"%s
 setlocal complete=.,w,b,u,t,i,kspell
@@ -49,7 +49,7 @@ if &filetype != 'vim'
 setlocal filetype=vim
 endif
 setlocal fixendofline
-setlocal foldcolumn=1
+setlocal foldcolumn=2
 setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -104,7 +104,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en,de
-setlocal statusline=
+setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -125,17 +125,17 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-311,320fold
-321,336fold
-311
+333,342fold
+343,358fold
+333
 normal! zo
-321
+343
 normal! zo
-let s:l = 315 - ((35 * winheight(0) + 30) / 61)
+let s:l = 1 - ((0 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-315
+1
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

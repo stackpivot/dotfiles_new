@@ -5,8 +5,8 @@ nnoremap <buffer> <silent> C :PluginClean!
 nnoremap <buffer> <silent> D :exec 'Delete'.getline('.')
 nnoremap <buffer> <silent> I :exec 'InstallAndRequire'.substitute(getline('.'), '^Plugin ', 'Plugin! ', '')
 nnoremap <buffer> <silent> R :call vundle#scripts#reload()
-nnoremap <buffer> <silent> add! :exec 'Install'.substitute(getline('.'), '^Plugin ', 'Plugin! ', '')
 nnoremap <buffer> <silent> add :exec 'Install'.getline('.')
+nnoremap <buffer> <silent> add! :exec 'Install'.substitute(getline('.'), '^Plugin ', 'Plugin! ', '')
 nnoremap <buffer> <silent> c :PluginClean
 nnoremap <buffer> <silent> h :h vundle
 nnoremap <buffer> <silent> i :exec 'InstallAndRequire'.getline('.')
@@ -40,7 +40,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal cursorline
+setlocal nocursorline
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -126,11 +126,11 @@ setlocal winfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 50 - ((49 * winheight(0) + 30) / 61)
+let s:l = 55 - ((54 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-50
+55
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

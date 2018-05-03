@@ -1,5 +1,11 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
+snoremap <buffer> <silent>  :call UltiSnips#JumpForwards()
+snoremap <buffer> <silent>  :call UltiSnips#JumpForwards()
+snoremap <buffer> <silent>  :call UltiSnips#JumpBackwards()
+inoremap <buffer> <silent>  =UltiSnips#JumpForwards()
+inoremap <buffer> <silent>  =UltiSnips#JumpForwards()
+inoremap <buffer> <silent>  =UltiSnips#JumpBackwards()
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -92,7 +98,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en,de
-setlocal statusline=%!airline#statusline(2)
+setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=.py
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -113,12 +119,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 24) / 48)
+let s:l = 19 - ((18 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
-normal! 08|
+19
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

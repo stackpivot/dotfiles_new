@@ -79,7 +79,7 @@ setlocal nrformats=bin,octal,hex
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
-setlocal path=~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,
+setlocal path=~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,~/.dotfiles/.git,~/.dotfiles,
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -123,7 +123,8 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
-normal! 06|
+normal! 022|
+lcd ~/.dotfiles
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

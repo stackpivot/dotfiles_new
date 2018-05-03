@@ -26,7 +26,7 @@ setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
-setlocal nocursorline
+setlocal cursorline
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -37,7 +37,7 @@ if &filetype != 'python'
 setlocal filetype=python
 endif
 setlocal fixendofline
-setlocal foldcolumn=0
+setlocal foldcolumn=2
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -115,19 +115,21 @@ setlocal wrapmargin=0
 silent! normal! zE
 1,14fold
 16,24fold
-27,53fold
-57,68fold
-56,68fold
-56
+26,29fold
+31,46fold
+59,67fold
+26
 normal! zo
-57
+31
 normal! zo
-let s:l = 73 - ((72 * winheight(0) + 25) / 50)
+59
+normal! zo
+let s:l = 81 - ((47 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-73
-normal! 011|
+81
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
