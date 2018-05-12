@@ -36,12 +36,6 @@ set sidescroll=1       " Number of cols to scroll at a time
 call plug#begin('~/.vim/plugged')
 
 
-
-Plug 'VundleVim/Vundle.vim'
-
-
-
-
 " ---------------------------------------------------------------------------------------------
 " git and version control plugins
 " ---------------------------------------------------------------------------------------------
@@ -76,7 +70,7 @@ Plug 'kshenoy/vim-signature'
 " development environment
 " ---------------------------------------------------------------------------------------------
 
-Plug 'Tagbar'
+" Plug 'Tagbar'
 Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 
@@ -100,7 +94,7 @@ Plug 'cdmedia/itg_flat_vim'
 Plug 'morhetz/gruvbox'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jonathanfilip/vim-lucius'
-Plug 'summerfruit256.vim'
+" Plug 'summerfruit256.vim'
 Plug 'NLKNguyen/papercolor-theme'
 
 
@@ -148,7 +142,9 @@ Plug 'unterzicht/vim-virtualenv'
 Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-Plug 'Syntastic'
+" Plug 'Syntastic'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 " Plug 'blueyed/vim-diminactive'
 Plug 'mbbill/undotree'
@@ -902,17 +898,31 @@ fun! Ranger()
   return result
 endfun
 
-" Syntastic Syntax Check
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
-let g:syntastic_loc_list_height=3
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = '/usr/bin/python2.7'
+"-------------------------------------------------------
+" LINTER
+"-------------------------------------------------------
+
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+
+
+" Syntastic Syntax Check
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_loc_list_height=3
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_python_exec = '/usr/bin/python2.7'
 
 
 " Multi Cursor
