@@ -49,7 +49,7 @@ if &filetype != 'vim'
 setlocal filetype=vim
 endif
 setlocal fixendofline
-setlocal foldcolumn=1
+setlocal foldcolumn=2
 setlocal nofoldenable
 setlocal foldexpr=0
 setlocal foldignore=#
@@ -80,7 +80,7 @@ setlocal list
 setlocal makeencoding=
 setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
-setlocal modeline
+setlocal nomodeline
 setlocal modifiable
 setlocal nrformats=bin,octal,hex
 setlocal number
@@ -131,12 +131,12 @@ silent! normal! zE
 normal! zo
 321
 normal! zo
-let s:l = 315 - ((35 * winheight(0) + 30) / 61)
+let s:l = 421 - ((41 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-315
-normal! 0
+421
+normal! 032|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

@@ -57,7 +57,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " ---------------------------------------------------------------------------------------------
 " navigation
 " ---------------------------------------------------------------------------------------------
-
+Plugin 'hari-rangarajan/CCTree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'wincent/command-t'
@@ -409,6 +409,19 @@ nnoremap <leader>wq :w<CR>:bd<CR>
 set hlsearch
 " nnoremap <CR> :nohlsearch<CR><CR>
 noremap <F3> :set hlsearch! hlsearch?<CR>
+
+
+" CCtree
+
+" Create and load DB
+" find . -name "*.c" > cscope.files
+" cscope -b -q -k
+" ctags -R ./*
+
+let g:CCTreeLoadDB = '<leader>cl'
+let g:CCTreeKeyTraceForwardTree= '<leader>cf'
+let g:CCTreeKeyTraceReverseTree = '<leader>cx'
+
 
 
 " clear search highlight
